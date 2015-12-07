@@ -18,7 +18,7 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
 /**
  *
-  test
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
