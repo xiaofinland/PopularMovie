@@ -10,36 +10,37 @@ public class Movie implements Parcelable {
 
     public static final String PARCEL_TAG = "movie_tag";
 
-    private String id;
-    private String title;
-    private String posterPath;
-    private String overview;
-    private String release_date;
-    private float vote_average;
-    private boolean favorite;
-    private String runtime;
+    public String thumb;
+    public String id;
+    public String title;
+    public String poster;
+    public String overview;
+    public String release_date;
+    public String rating;
 
     public Movie(){
 
     }
 
-    public Movie (String id, String title,String posterPath,String overview,String release_date,float vote_average){
+    public Movie (String thumb, String title,String poster,String overview,String release_date,String rating){
+        this.thumb=thumb;
         this.id=id;
         this.title = title;
-        this.posterPath = posterPath;
+        this.poster = poster;
         this.overview = overview;
         this.release_date = release_date;
-        this.vote_average=vote_average;
+        this.rating=rating;
     }
 
     private Movie (Parcel in){
+        thumb=in.readString();
         id = in.readString();
         title = in.readString();
-        posterPath = in.readString();
+        poster = in.readString();
         overview = in.readString();
         release_date =in.readString();
-        vote_average = in.readFloat();
-        favorite =in.readInt()==0;
+        rating = in.readString();
+
     }
     @Override
     public int describeContents(){
@@ -47,13 +48,14 @@ public class Movie implements Parcelable {
     }
     @Override
     public void writeToParcel (Parcel parcel, int i){
+        parcel.writeString(thumb);
         parcel.writeString(id);
         parcel.writeString(title);
-        parcel.writeString(posterPath);
+        parcel.writeString(poster);
         parcel.writeString(overview);
         parcel.writeString(release_date);
-        parcel.writeFloat(vote_average);
-        parcel.writeInt(favorite ? 0:1);
+        parcel.writeString(rating);
+
     }
    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>(){
     @Override
@@ -66,40 +68,59 @@ public class Movie implements Parcelable {
         }
    };
 
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
+    }
+
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getPosterPath() {
-        return posterPath;
+
+    public String getPoster() {
+        return poster;
     }
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
+
     public String getOverview() {
         return overview;
     }
+
     public void setOverview(String overview) {
         this.overview = overview;
     }
+
     public String getRelease_date() {
         return release_date;
     }
+
     public void setRelease_date(String release_date) {
         this.release_date = release_date;
     }
-    public float getVote_average() {
-        return vote_average;
+
+    public String getRating() {
+        return rating;
     }
-    public void setVote_average(float vote_average) {
-        this.vote_average = vote_average;
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

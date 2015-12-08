@@ -1,15 +1,16 @@
 package com.example.android.popularmovie;
 
 import android.app.Activity;
+
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-
+import android.view.LayoutInflater;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,27 +19,26 @@ import java.util.List;
 public class MovieAdapter extends ArrayAdapter<Movie> {
     private static final String LOG_TAG = MovieAdapter.class.getSimpleName();
 
-    public MovieAdapter(Activity context,  List<Movie> objects) {
+    public MovieAdapter(Context context,  ArrayList<Movie> objects) {
         super(context,0,objects);
     }
 
     @Override
     public View getView (int position, View convertView, ViewGroup parent){
         //get Movie object from the ArrayAdapter at the appropriate position
-        Movie movie = getItem(position);
-        ImageView imageView;
+        Movie current = getItem(position);
+        String thumbUrl = current.thumb;
+
         if (convertView == null) {
-           imageView = new ImageView(getContext());
-        }else {
-            imageView=(ImageView)convertView;
+           convertView = LayoutInflater.from(getContext()).inflate (R.layout.image_item,parent,false);
         }
 
 
         Picasso.with(getContext())
-                .load(movie.getPosterPath())
+                .load(thumbUrl)
                 .fit()
                 .centerInside()
-                .into(imageView);
-        return imageView;
+                .into((ImageView) convertView);
+        return convertView;
     }
 }
