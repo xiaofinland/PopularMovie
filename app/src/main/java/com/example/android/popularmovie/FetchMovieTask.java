@@ -27,7 +27,9 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
     // public FetchMovieTask(){
     //      }
-
+    public void setmMovieAdapater(MovieAdapter movieAdapater){
+        this.mMovieAdapater=movieAdapater;
+    }
     private ArrayList<Movie> getMovieDataFromJason(String MovieJasonStr) throws JSONException {
         final String JON_RESULTS = "results";
 
@@ -71,6 +73,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
             // Make a movie object and add to movie list
             Movie movie = new Movie(thumb, title, poster, overview, release_date, rating);
             resultMovies.add(movie);
+            Log.i(LOG_TAG, movie.toString());
         }
         return resultMovies;
     }
@@ -155,6 +158,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
 
     @Override
     protected void onPostExecute(ArrayList<Movie> result) {
+        Log.i(LOG_TAG, "Result movie:   "+ result.toString());
         if (result != null) {
             mMovieAdapater.clear();
             //movies = movies;

@@ -29,10 +29,10 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         Movie current = getItem(position);
         String thumbUrl = current.thumb;
 
+
         if (convertView == null) {
            convertView = LayoutInflater.from(getContext()).inflate (R.layout.image_item,parent,false);
         }
-
 
         Picasso.with(getContext())
                 .load(thumbUrl)
