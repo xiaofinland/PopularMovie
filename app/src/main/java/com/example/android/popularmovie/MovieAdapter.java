@@ -29,17 +29,22 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         Movie current = getItem(position);
         String thumbUrl = current.thumb;
 
+        ImageView imageView;
 
         if (convertView == null) {
            convertView = LayoutInflater.from(getContext()).inflate (R.layout.image_item,parent,false);
         }
+        imageView = (ImageView) convertView;
+
 
         Picasso.with(getContext())
                 .load(thumbUrl)
                 .fit()
                 .centerInside()
-                .into((ImageView) convertView);
+                .into(imageView);
 
-        return convertView;
+        imageView.setAdjustViewBounds(true);
+
+        return imageView;
     }
 }
