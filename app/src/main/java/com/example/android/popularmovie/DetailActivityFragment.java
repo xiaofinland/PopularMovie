@@ -24,11 +24,16 @@ public class DetailActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View detailView= inflater.inflate(R.layout.fragment_detail, container, false);
         Intent intent = getActivity().getIntent();
+        //pass title
         if (intent != null && intent.hasExtra("MOVIE_TITLE")){
             String movie_title = intent.getStringExtra("MOVIE_TITLE");
             ((TextView) detailView.findViewById(R.id.movie_title_text))
                     .setText(movie_title);
 
+            // set activity title
+            getActivity().setTitle(movie_title);
+
+            //pass poster image
             String movie_poster = intent.getStringExtra("MOVIE_POSTER");
             ImageView poster = (ImageView) detailView.findViewById(R.id.poster_image_view);
                     Picasso
@@ -36,7 +41,7 @@ public class DetailActivityFragment extends Fragment {
                             .load(movie_poster)
                             .fit()
                             .into(poster);
-
+        //pass thumb image
             String movie_thumb = intent.getStringExtra("MOVIE_THUMB");
             ImageView thumb = (ImageView)detailView.findViewById(R.id.thumb_image_view);
                 Picasso
@@ -45,14 +50,15 @@ public class DetailActivityFragment extends Fragment {
                         .fit()
                         .into(thumb);
 
+            //pass release date
             String movie_release = intent.getStringExtra("MOVIE_RELEASE");
             ((TextView) detailView.findViewById(R.id.movie_releas_date_text))
-                    .setText("Original Release Date:  "+ movie_release);
-
+                    .setText(movie_release);
+            //pass rating
             String movie_rating = intent.getStringExtra("MOVIE_RATING");
             ((TextView) detailView.findViewById(R.id.movie_rating_text))
                     .setText( movie_rating);
-
+            //pass overview
             String movie_overview = intent.getStringExtra("MOVIE_OVERVIEW");
             ((TextView) detailView.findViewById(R.id.movie_overview_text))
                     .setText( movie_overview);
