@@ -37,19 +37,28 @@ public class DetailActivityFragment extends Fragment {
                             .fit()
                             .into(poster);
 
+            String movie_thumb = intent.getStringExtra("MOVIE_THUMB");
+            ImageView thumb = (ImageView)detailView.findViewById(R.id.thumb_image_view);
+                Picasso
+                        .with(getContext())
+                        .load(movie_thumb)
+                        .fit()
+                        .into(thumb);
+
             String movie_release = intent.getStringExtra("MOVIE_RELEASE");
             ((TextView) detailView.findViewById(R.id.movie_releas_date_text))
                     .setText("Original Release Date:  "+ movie_release);
 
             String movie_rating = intent.getStringExtra("MOVIE_RATING");
             ((TextView) detailView.findViewById(R.id.movie_rating_text))
-                    .setText("Users' Rating:  " + movie_rating);
+                    .setText( movie_rating);
 
             String movie_overview = intent.getStringExtra("MOVIE_OVERVIEW");
             ((TextView) detailView.findViewById(R.id.movie_overview_text))
-                    .setText("Overview:  "+ movie_overview);
+                    .setText( movie_overview);
         }
         return detailView;
     }
 
 }
+

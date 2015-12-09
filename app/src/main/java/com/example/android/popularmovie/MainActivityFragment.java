@@ -27,6 +27,7 @@ public class MainActivityFragment extends Fragment  {
     //Keys for Intent to detail activity
     public static final String MOVIE_TITLE = "MOVIE_TITLE";
     public static final String MOVIE_POSTER = "MOVIE_POSTER";
+    public static final String MOVIE_THUMB = "MOVIE_THUMB";
     public static final String MOVIE_RELEASE = "MOVIE_RELEASE";
     public static final String MOVIE_RATING = "MOVIE_RATING";
     public static final String MOVIE_OVERVIEW = "MOVIE_OVERVIEW";
@@ -65,6 +66,7 @@ public class MainActivityFragment extends Fragment  {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent detailIntent = new Intent(getActivity(), DetailActivity.class)
                         .putExtra(MOVIE_TITLE, movies.get(position).title)
+                        .putExtra(MOVIE_THUMB, movies.get(position).thumb)
                         .putExtra(MOVIE_POSTER, movies.get(position).poster)
                         .putExtra(MOVIE_RELEASE, movies.get(position).release_date)
                         .putExtra(MOVIE_RATING, movies.get(position).rating)
@@ -72,8 +74,7 @@ public class MainActivityFragment extends Fragment  {
                 startActivity(detailIntent);
             }
         });
-        // mGridView.setAdapter(mMovieAdapter);
-        //updateMovies();
+
         return rootView;
     }
 
@@ -93,40 +94,4 @@ public class MainActivityFragment extends Fragment  {
         updateMovies();
     }
 }
-
-
-    /**
-
-@Override
-    public void onTaskComplete (final ArrayList<Movie> movies){
-        if (mMovieAdapter == null){
-            mMovieAdapter = new MovieAdapter(getActivity(), movies);
-            mGridView.setAdapter(mMovieAdapter);
-            mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                    Intent detailIntent = new Intent(getActivity(),DetailActivity.class)
-                        .putExtra(MOVIE_TITLE, movies.get(position).title)
-                        .putExtra(MOVIE_POSTER, movies.get(position).posterPath)
-                            .putExtra(MOVIE_RELEASE, movies.get(position).release_date)
-                            .putExtra(MOVIE_RATING, movies.get(position).rating)
-                            .putExtra(MOVIE_OVERVIEW, movies.get(position).overview);
-
-
-                    startActivity(detailIntent);
-                }
-            });
-
-            }else {
-            mMovieAdapter.clear();
-            mMovieAdapter.addAll(movies);
-        }
-
-         mMovieAdapter.notifyDataSetChanged();
-
-    }
-    public interface FragmentCallback {
-        void onItemClick(Movie movie);
-    }
-*/
 
