@@ -39,6 +39,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
                 .fit()
                 .centerInside()
                 .into((ImageView) convertView);
+
         return convertView;
     }
 }
