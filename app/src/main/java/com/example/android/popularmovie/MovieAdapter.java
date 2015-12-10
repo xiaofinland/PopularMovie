@@ -35,15 +35,14 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
            convertView = LayoutInflater.from(getContext()).inflate (R.layout.image_item,parent,false);
         }
         imageView = (ImageView) convertView;
-
+        imageView.setAdjustViewBounds(true);
 
         Picasso.with(getContext())
                 .load(thumbUrl)
                 .fit()
-                .centerInside()
                 .into(imageView);
 
-        imageView.setAdjustViewBounds(true);
+
 
         return imageView;
     }
