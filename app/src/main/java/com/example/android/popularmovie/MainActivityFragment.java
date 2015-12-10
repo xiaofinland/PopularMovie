@@ -27,7 +27,7 @@ public class MainActivityFragment extends Fragment  {
     //Keys for Intent to detail activity
     public static final String MOVIE_TITLE = "MOVIE_TITLE";
     public static final String MOVIE_POSTER = "MOVIE_POSTER";
-    public static final String MOVIE_THUMB = "MOVIE_THUMB";
+    //public static final String MOVIE_THUMB = "MOVIE_THUMB";
     public static final String MOVIE_BACKDROP = "MOVIE_BACKDROP";
     public static final String MOVIE_RELEASE = "MOVIE_RELEASE";
     public static final String MOVIE_RATING = "MOVIE_RATING";

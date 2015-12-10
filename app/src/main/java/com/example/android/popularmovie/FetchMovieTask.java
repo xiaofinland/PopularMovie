@@ -31,7 +31,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
     private ArrayList<Movie> getMovieDataFromJason(String MovieJasonStr) throws JSONException {
         final String JON_RESULTS = "results";
 
-        // velues we are going to fetch from JSON.
+        // Values we are going to fetch from JSON.
         final String JON_ID = "id";
         final String JON_OVERVIEW = "overview";
         final String JON_RELEASE_DATE = "release_date";

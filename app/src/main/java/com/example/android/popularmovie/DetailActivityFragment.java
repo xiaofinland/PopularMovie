@@ -43,7 +43,7 @@ public class DetailActivityFragment extends Fragment {
                             .load(movie_poster)
                             .fit()
                             .into(poster);
-        //pass thumb image
+        //pass Backdrop image
             String movie_backdrop = intent.getStringExtra("MOVIE_BACKDROP");
             Log.i(LOG_TAG, "Backdrop URL: " + movie_backdrop);
             ImageView backdrop = (ImageView)detailView.findViewById(R.id.backdrop_image_view);
