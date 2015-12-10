@@ -14,6 +14,7 @@ public class Movie implements Parcelable {
     public String id;
     public String title;
     public String poster;
+    public String back_drop;
     public String overview;
     public String release_date;
     public String rating;
@@ -22,11 +23,12 @@ public class Movie implements Parcelable {
 
     }
 
-    public Movie (String thumb, String title,String poster,String overview,String release_date,String rating){
+    public Movie (String thumb, String title,String poster,String back_drop,String overview,String release_date,String rating){
         this.thumb=thumb;
         this.id=id;
         this.title = title;
         this.poster = poster;
+        this.back_drop = back_drop;
         this.overview = overview;
         this.release_date = release_date;
         this.rating=rating;
@@ -37,6 +39,7 @@ public class Movie implements Parcelable {
         id = in.readString();
         title = in.readString();
         poster = in.readString();
+        back_drop = in.readString();
         overview = in.readString();
         release_date =in.readString();
         rating = in.readString();
@@ -52,6 +55,7 @@ public class Movie implements Parcelable {
         parcel.writeString(id);
         parcel.writeString(title);
         parcel.writeString(poster);
+        parcel.writeString(back_drop);
         parcel.writeString(overview);
         parcel.writeString(release_date);
         parcel.writeString(rating);
@@ -98,6 +102,14 @@ public class Movie implements Parcelable {
 
     public void setPoster(String poster) {
         this.poster = poster;
+    }
+
+    public String getBack_drop() {
+        return back_drop;
+    }
+
+    public void setBack_drop(String back_drop) {
+        this.back_drop = back_drop;
     }
 
     public String getOverview() {

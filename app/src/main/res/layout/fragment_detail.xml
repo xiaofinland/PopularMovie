@@ -17,11 +17,11 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/details_poster_height"
-            android:id="@+id/poster_image_view"
+            android:id="@+id/backdrop_image_view"
             android:src="#D1C4E9"/>
 
         <ImageView
-            android:id="@+id/thumb_image_view"
+            android:id="@+id/poster_image_view"
             style="@style/detail_thumb_image"
             android:layout_width="@dimen/details_thumb_width"
             android:layout_height="@dimen/details_thumb_height"
@@ -31,8 +31,8 @@
             android:id="@+id/movie_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/thumb_image_view"
-            android:layout_below="@+id/poster_image_view"
+            android:layout_toRightOf="@+id/poster_image_view"
+            android:layout_below="@+id/backdrop_image_view"
             style="@style/detail_title"
             />
 
@@ -41,15 +41,15 @@
             android:layout_height="match_parent"
             android:id="@+id/movie_releas_date_text"
             android:layout_below="@+id/movie_title_text"
-            android:layout_toRightOf="@+id/thumb_image_view"
+            android:layout_toRightOf="@+id/poster_image_view"
             style="@style/detail_release"
             />
         <LinearLayout
             android:id="@+id/rating_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/thumb_image_view"
-            android:layout_toEndOf="@+id/thumb_image_view"
+            android:layout_toRightOf="@+id/poster_image_view"
+            android:layout_toEndOf="@+id/poster_image_view"
             android:layout_below="@+id/movie_releas_date_text"
             style="@style/detail_rate"
             android:orientation="horizontal">
@@ -77,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/movie_overview_text"
-            android:layout_below="@+id/thumb_image_view"
+            android:layout_below="@+id/poster_image_view"
             style="@style/detail_overview"
             android:text="overview comes here"
             />

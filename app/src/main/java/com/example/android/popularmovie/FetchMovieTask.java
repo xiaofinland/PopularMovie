@@ -1,10 +1,8 @@
 package com.example.android.popularmovie;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,12 +21,12 @@ import java.util.ArrayList;
  */
 public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
     private static final String LOG_TAG = FetchMovieTask.class.getSimpleName();
-    private MovieAdapter mMovieAdapater;
+    private MovieAdapter mMovieAdapter;
 
     // public FetchMovieTask(){
     //      }
-    public void setmMovieAdapater(MovieAdapter movieAdapater){
-        this.mMovieAdapater=movieAdapater;
+    public void setmMovieAdapter(MovieAdapter movieAdapter){
+        this.mMovieAdapter =movieAdapter;
     }
     private ArrayList<Movie> getMovieDataFromJason(String MovieJasonStr) throws JSONException {
         final String JON_RESULTS = "results";
@@ -38,11 +36,13 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
         final String JON_OVERVIEW = "overview";
         final String JON_RELEASE_DATE = "release_date";
         final String JON_POSTER_PATH = "poster_path";
+        final String JON_BACKDROP_PATH = "backdrop_path";
         final String JON_TITLE = "original_title";
         final String JON_RATING = "vote_average";
 
         String thumbBaseUrl = "http://image.tmdb.org/t/p/w92/";
         String posterBaseUrl = "http://image.tmdb.org/t/p/w185/";
+        String backdropBaseUrl = "http://image.tmdb.org/t/p/w342/";
 
         JSONObject moviewJson = new JSONObject(MovieJasonStr);
         JSONArray movieArray = moviewJson.getJSONArray(JON_RESULTS);
@@ -56,6 +56,7 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
             String release_date = null;
             String thumb = null;
             String poster = null;
+            String back_drop =null;
             String title = null;
             String rating = null;
             //Get JSON object representing the Movie.
@@ -67,11 +68,12 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
             release_date = currentMovie.getString(JON_RELEASE_DATE);
             thumb = thumbBaseUrl + currentMovie.getString(JON_POSTER_PATH);
             poster = posterBaseUrl + currentMovie.getString(JON_POSTER_PATH);
+            back_drop =backdropBaseUrl + currentMovie.getString(JON_BACKDROP_PATH);
             title = currentMovie.getString(JON_TITLE);
             rating = currentMovie.getString(JON_RATING);
 
             // Make a movie object and add to movie list
-            Movie movie = new Movie(thumb, title, poster, overview, release_date, rating);
+            Movie movie = new Movie(thumb, title, poster, back_drop,overview, release_date, rating);
             resultMovies.add(movie);
             Log.i(LOG_TAG, movie.toString());
         }
@@ -160,10 +162,10 @@ public class FetchMovieTask extends AsyncTask<String, Void, ArrayList<Movie>> {
     protected void onPostExecute(ArrayList<Movie> result) {
         Log.i(LOG_TAG, "Result movie:   "+ result.toString());
         if (result != null) {
-            mMovieAdapater.clear();
-            //movies = movies;
+            mMovieAdapter.clear();
+
             for (Movie item : result) {
-                mMovieAdapater.add(item);
+                mMovieAdapter.add(item);
             }
 
 

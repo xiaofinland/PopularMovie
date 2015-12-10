@@ -3,6 +3,7 @@ package com.example.android.popularmovie;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import com.squareup.picasso.Picasso;
  * A placeholder fragment containing a simple view.
  */
 public class DetailActivityFragment extends Fragment {
-
+    private static final String LOG_TAG = DetailActivityFragment.class.getSimpleName();
     public DetailActivityFragment() {
     }
 
@@ -35,6 +36,7 @@ public class DetailActivityFragment extends Fragment {
 
             //pass poster image
             String movie_poster = intent.getStringExtra("MOVIE_POSTER");
+            Log.i(LOG_TAG, "poster URL: " + movie_poster);
             ImageView poster = (ImageView) detailView.findViewById(R.id.poster_image_view);
                     Picasso
                             .with(getActivity())
@@ -42,13 +44,14 @@ public class DetailActivityFragment extends Fragment {
                             .fit()
                             .into(poster);
         //pass thumb image
-            String movie_thumb = intent.getStringExtra("MOVIE_THUMB");
-            ImageView thumb = (ImageView)detailView.findViewById(R.id.thumb_image_view);
+            String movie_backdrop = intent.getStringExtra("MOVIE_BACKDROP");
+            Log.i(LOG_TAG, "Backdrop URL: " + movie_backdrop);
+            ImageView backdrop = (ImageView)detailView.findViewById(R.id.backdrop_image_view);
                 Picasso
                         .with(getContext())
-                        .load(movie_thumb)
+                        .load(movie_backdrop)
                         .fit()
-                        .into(thumb);
+                        .into(backdrop);
 
             //pass release date
             String movie_release = intent.getStringExtra("MOVIE_RELEASE");
